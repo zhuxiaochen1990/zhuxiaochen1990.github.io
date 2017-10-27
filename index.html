@@ -97,7 +97,7 @@
     
   
     
-    <!-- 微信二维码展示区域 -->
+ /*   <!-- 微信二维码展示区域 -->
     <div class="code-item" id="code-wechat">
         <div class="code-title"></div>
         <div class="code-area">
@@ -105,13 +105,13 @@
         </div>
         <div class="code-footer">长按以上二维码向我付款</div>
     </div>
-    
+ */ 
     <script>
     if(navigator.userAgent.match(/Alipay/i)) {
         // 支付宝
         window.location.href = setting.aliUrl; 
     } else if(navigator.userAgent.match(/MicroMessenger\//i)) {
-                // 微信
+        // 微信
 		window.location.href = setting.wechatUrl; 
     } else {
 		//其他浏览器直接跳转到支付宝
