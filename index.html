@@ -90,34 +90,44 @@
     <div class="code-item" id="code-all">
         <div class="code-title"></div>
         <div class="code-area">
-           <img id="page-url" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==">
+            <img id="page-url" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==">
         </div>
         <div class="code-footer">扫描以上二维码向我付款</div>
     </div>
     
   
     
-   <!-- 微信二维码展示区域 -->
+  <!-- 微信二维码展示区域 -->
     <div class="code-item" id="code-wechat">
         <div class="code-title"></div>
         <div class="code-area">
-          <img id="wechat-url" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==">
+            <img id="wechat-url" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==">
         </div>
         <div class="code-footer">长按以上二维码向我付款</div>
     </div>
-  
+
     <script>
     if(navigator.userAgent.match(/Alipay/i)) {
         // 支付宝
         window.location.href = setting.aliUrl; 
     } else if(navigator.userAgent.match(/MicroMessenger\//i)) {
-        // 微信
-		window.location.href = setting.wechatUrl; 
+          // 微信
+	  document.getElementById("wechat-url").src = setting.qrcodeApi + urlEncode(setting.wechatUrl);
+          document.getElementById("code-wechat").style.display = "block";
     } else {
-		//其他浏览器直接跳转到支付宝
-		window.location.href = setting.aliUrl; 
+	  //其他浏览器直接跳转到支付宝
+	  window.location.href = setting.aliUrl; 
     }
-    
+ 
+     /*****************************************
+     * url编码函数
+     * 输入参数：待编码的字符串
+     * 输出参数：编码好的
+     ****************************************/
+	 
+    function urlEncode(String) {
+        return encodeURIComponent(String).replace(/'/g,"%27").replace(/"/g,"%22");	
+    } 
  
     </script>
 
