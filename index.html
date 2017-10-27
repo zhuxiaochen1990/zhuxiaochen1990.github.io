@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>万能收款码</title>
+    <title>Pay</title>
     
     <script>
     var setting = {
@@ -127,14 +127,12 @@
         // 微信
         document.getElementById("wechat-url").src = setting.qrcodeApi + urlEncode(setting.wechatUrl);
         document.getElementById("code-wechat").style.display = "block";
-    } else if(navigator.userAgent.match(/QQ\//i)) {
-        // QQ
-        document.getElementById("qq-url").src = setting.qrcodeApi + urlEncode(setting.qqUrl);
-        document.getElementById("code-qq").style.display = "block";
     } else {
+		//其他浏览器直接跳转到支付宝
+		window.location.href = setting.aliUrl; 
         // 其它，显示“万能码”
-        document.getElementById("page-url").src = setting.qrcodeApi + urlEncode(window.location.href);
-        document.getElementById("code-all").style.display = "block";
+        //document.getElementById("page-url").src = setting.qrcodeApi + urlEncode(window.location.href);
+        //document.getElementById("code-all").style.display = "block";
     }
     
     /*****************************************
